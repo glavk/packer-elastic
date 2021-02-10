@@ -1,0 +1,17 @@
+---
+- name: "Provision ElasticSearch image..."
+  hosts: default
+  become: true
+
+  vars:
+    es_version: 7.10.2
+    es_config:
+      node.name: "node-1"
+      network.host: "0.0.0.0"
+      cluster.initial_master_nodes: '["node-1"]'
+    es_heap_size: 4g
+
+  roles:
+    - apt
+    - ssh
+    - elastic.elasticsearch

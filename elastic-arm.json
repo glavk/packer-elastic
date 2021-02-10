@@ -1,0 +1,27 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "eu-central-1",
+      "shared_credentials_file": "/home/sea/.aws/credentials",
+      "profile": "aws_profile",
+      "source_ami": "ami-024c9d46d0580c973",
+      "instance_type": "m6g.large",
+      "ssh_username": "ubuntu",
+      "ami_name": "elastic-v0.1",
+      "ami_virtualization_type": "hvm",
+      "tags": {
+        "OS_Version": "Ubuntu",
+        "Release": "20.04",
+        "Role": "ElasticSearch (ES)",
+        "Arch": "aarch64"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "ansible",
+      "playbook_file": "packer-es.yml"
+    }
+  ]
+}
