@@ -12,6 +12,4 @@
     es_heap_size: 4g
 
   roles:
-    - apt
-    - ssh
     - elastic.elasticsearch
